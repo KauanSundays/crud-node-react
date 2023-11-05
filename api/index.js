@@ -1,9 +1,12 @@
 import express from 'express' // é usado para configurar e executar um servidor web em JS
+import userRoutes from "./routes/user.js"
 import cors from 'cors'
 
 const app = express()
 
 app.use(express.json())
 app.use(cors())
+
+app.use("/", userRoutes);
 
 app.listen(8800)
