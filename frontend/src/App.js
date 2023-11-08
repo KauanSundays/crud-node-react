@@ -31,7 +31,7 @@ function App() {
   const [onEdit, setOnEdit] = useState(null); 
 
   const getUsers = async () => { // Pegando Usuarios do banco (READ)
-    try {
+    try { // tenta buscar os usuarios
       const res = await axios.get("http://localhost:8800");
       setUsers(res.data.sort((a, b) => (a.nome > b.nome ? 1 : -1)));
     } catch (error) {
