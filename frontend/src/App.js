@@ -1,11 +1,12 @@
 import GlobalStyle from "./styles/global.js";  // Estilos globais do aplicativo
 import styled from "styled-components";  
-import { toast, ToastContainer } from "react-toastify";  
-import Grid from "./components/Grid.js" 
-import "react-toastify";  
-import Form from "./components/Form.js"  // Importa o componente Form
+import Grid from "./components/Grid.js";
+import { ToastContainer, toast } from 'react-toastify';
+import Form from "./components/Form.js";  // Importa o componente Form
 import axios from "axios";
 import { useEffect, useState } from "react";
+import 'react-toastify/dist/ReactToastify.css';
+
 
 
 const Container = styled.div`
@@ -21,6 +22,11 @@ const Container = styled.div`
 const Title = styled.h2``;
 
 function App() {
+
+  function notify() {
+    toast.success('formulario enviado com sucesso')
+  }
+  
   const [users, setUsers] = useState([]); 
   const [onEdit, setOnEdit] = useState(null); 
 
