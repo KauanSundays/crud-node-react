@@ -24,7 +24,7 @@ function App() {
   const [users, setUsers] = useState([]); 
   const [onEdit, setOnEdit] = useState(null); 
 
-  const getUsers = async () => { // Pegando Usuarios do banco
+  const getUsers = async () => { // Pegando Usuarios do banco (READ)
     try {
       const res = await axios.get("http://localhost:8800");
       setUsers(res.data.sort((a, b) => (a.nome > b.nome ? 1 : -1)));
@@ -37,13 +37,12 @@ function App() {
     getUsers();
   }, [setUsers]);
 
-
-
   return (
     <>
       <Container>
         <Title>USUARIOS</Title>  
         <Form /> 
+        <Grid users={users}/>
       </Container>
       <ToastContainer autoClose={3000} position={toast.POSITION.BOTTOM_LEFT} /> 
       <GlobalStyle />  {/* Estilos de GlobalStyle*/}
