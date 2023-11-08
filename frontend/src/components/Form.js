@@ -65,6 +65,7 @@ const Form = ({ getUsers, onEdit, setOnEdit }) => {
       !user.data_nascimento.value
     ) {
       return toast.warn("Preencha todos os campos!");
+      //Verifica se esta preenchido os inputs
     }
 
     if (onEdit) {
@@ -97,6 +98,7 @@ const Form = ({ getUsers, onEdit, setOnEdit }) => {
     setOnEdit(null);
     getUsers();
   };
+
 
   return (
     <FormContainer ref={ref} onSubmit={handleSubmit}>
