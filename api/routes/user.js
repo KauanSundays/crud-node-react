@@ -1,11 +1,14 @@
-import express from 'express';
-//configurar e executar um servidor web em JavaScript.
-import { getUsers } from '../controllers/user.js';
+import express from 'express'; //Express = Servidor 
+import { getUsers, addUser, updateUser, deleteUser } from '../controllers/user.js';
 const router = express.Router();
 // Objeto 'router' defini as rotas do aplicativo.
 
-router.get("/", getUsers);
-// Rota GET na raiz ("/") associada à 'getUsers' importada.
+router.get("/", getUsers); // READ
 
-export default router;
-//Exporta o objeto 'router' para ser usado em outros lugares do aplicativo.
+router.post("/", addUser); // CREATE
+
+router.put("/", updateUser); // UPDATE
+
+router.delete("/:id", deleteUser); // DELETE
+
+export default router; //Exortando o Router 
