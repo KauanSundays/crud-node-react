@@ -31,7 +31,7 @@ const Label = styled.label``;
 
 const Button = styled.button`
   padding: 10px;
-  cursor: pointer;
+  cursor: pointer; // Ter o visual de click 
   border-radius: 5px;
   border: none;
   background-color: #2c73d2;
