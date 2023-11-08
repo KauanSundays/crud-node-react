@@ -1,9 +1,12 @@
-import GlobalStyle from "./styles/global.js";
-import styled from "styled-components";
-import {toast, ToastContainer} from "react-toastify";
-import Grid from "./components/Grid.js"
-import "react-toastify";
-import Form from "./components/Form.js"
+import GlobalStyle from "./styles/global.js";  // Estilos globais do aplicativo
+import styled from "styled-components";  
+import { toast, ToastContainer } from "react-toastify";  
+import Grid from "./components/Grid.js" 
+import "react-toastify";  
+import Form from "./components/Form.js"  // Importa o componente Form
+import axios from "axios";
+import { useEffect, useState } from "react";
+
 
 const Container = styled.div`
   width: 100%;
@@ -14,21 +17,38 @@ const Container = styled.div`
   align-items: center;
   gap: 10px;
 `;
+
 const Title = styled.h2``;
 
-
 function App() {
+  const [users, setUsers] = useState([]); 
+  const [onEdit, setOnEdit] = useState(null); 
+
+  const getUsers = async () => { // Pegando Usuarios do banco
+    try {
+      const res = await axios.get("http://localhost:8800");
+      setUsers(res.data.sort((a, b) => (a.nome > b.nome ? 1 : -1)));
+    } catch (error) {
+      toast.error(error);
+    }
+  };
+
+  useEffect(() => {
+    getUsers();
+  }, [setUsers]);
+
+
+
   return (
     <>
       <Container>
-        <Title>USUARIOS</Title>
-        <Form />
+        <Title>USUARIOS</Title>  
+        <Form /> 
       </Container>
-      <ToastContainer autoClose={3000} position={toast.POSITION.BOTTOM_LEFT} />
-      <GlobalStyle/>
+      <ToastContainer autoClose={3000} position={toast.POSITION.BOTTOM_LEFT} /> 
+      <GlobalStyle />  {/* Estilos de GlobalStyle*/}
     </>
   );
 }
 
 export default App;
-// exportando pros outros
