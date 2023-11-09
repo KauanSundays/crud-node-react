@@ -7,7 +7,7 @@ router.get("/", getUsers); // READ
 
 router.post("/", addUser); // CREATE
 
-router.put("/", updateUser); // UPDATE
+router.put("/:id", updateUser); // UPDATE
 
 router.delete("/:id", deleteUser); // DELETE
 
