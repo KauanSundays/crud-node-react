@@ -32,7 +32,7 @@ export const addUser = (req, res) => { // CREATE
   };
 
 
-  export const updateUser = (req, res) => { // UPDATE
+  export const updateUser = (req, res) => {
     const q =
       "UPDATE usuarios SET `nome` = ?, `email` = ?, `fone` = ?, `data_nascimento` = ? WHERE `id` = ?";
   
@@ -49,7 +49,7 @@ export const addUser = (req, res) => { // CREATE
       return res.status(200).json("Usuário atualizado com sucesso.");
     });
   };
-  
+
 export const deleteUser = (req, res) => { // DELETE
     const q = "DELETE FROM usuarios WHERE `id` = ?";
   
